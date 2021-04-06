@@ -1,0 +1,52 @@
+CREATE DATABASE lab_mysql;
+
+
+CREATE TABLE IF NOT EXISTS cars(
+vin VARCHAR(20) PRIMARY KEY,
+manufacturer VARCHAR(30) NOT NULL,
+model VARCHAR(30) NOT NULL,
+ano INT NOT NULL,
+color VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS customer(
+customer_id INT PRIMARY KEY,
+name VARCHAR(40) NOT NULL,
+phone VARCHAR(20) NOT NULL,
+email VARCHAR(40),
+address VARCHAR(40) NOT NULL,
+city VARCHAR(20) NOT NULL,
+state VARCHAR(20) NOT NULL,
+country VARCHAR(20) NOT NULL,
+zip INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS salesperson(
+staff_id INT PRIMARY KEY,
+name VARCHAR(40) NOT NULL,
+store VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS invoice(
+invoice_number INT PRIMARY KEY,
+fecha DATE NOT NULL,
+#FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+car VARCHAR(20) ,
+customer INT ,
+salesperson INT 
+);
+
+ALTER TABLE invoice
+ADD FOREIGN KEY (customer)
+REFERENCES customer (customer_id)
+ON DELETE SET NULL;
+
+ALTER TABLE invoice
+ADD FOREIGN KEY(salesperson)
+REFERENCES salesperson(staff_id)
+ON DELETE SET NULL;
+
+ALTER TABLE invoice
+ADD FOREIGN KEY(car)
+REFERENCES cars(vin)
+ON DELETE SET NULL;
