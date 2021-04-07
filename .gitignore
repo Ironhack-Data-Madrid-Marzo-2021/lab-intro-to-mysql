@@ -2,3 +2,6 @@
 **/*.ipynb_checkpoints/
 **/__pycache__
 .vscode
+**/your-code/lab_mysql.mwb
+**/your-code/lab_mysql.sql
+**/your-code/lab_mysql.mwb.bak
